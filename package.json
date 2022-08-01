@@ -1,0 +1,46 @@
+{
+  "name": "node_restserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "dev": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && nuxt --env.NODE_TLS_REJECT_UNAUTHORIZED=0",
+    "url": "git+https://github.com/niklauspalerme/Node_RestServer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niklauspalerme/Node_RestServer/issues"
+  },
+  "homepage": "https://github.com/niklauspalerme/Node_RestServer#readme",
+  "dependencies": {
+    "@sap/hana-client": "^2.12.22",
+    "@sap/hdbext": "^7.6.4",
+    "allow-methods": "^4.1.1",
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-openapi-validator": "^4.13.8",
+    "express-validator": "^6.14.0",
+    "fetch": "^1.1.0",
+    "helmet": "^5.1.1",
+    "mongoose": "^6.2.10",
+    "node-fetch": "^3.2.4",
+    "nodemon": "^2.0.15",
+    "request": "^2.88.2",
+    "sap-hdbext-promisfied": "^2.202205.1",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.5.0",
+    "winston": "^3.8.1"
+  }
+}

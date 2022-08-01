@@ -1,0 +1,363 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Todo Service",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "/api"
+    }
+  ],
+
+
+  "paths": {
+    "/resource1": {
+      "get": {
+        "summary": "The method allow us to get all the data available on SAP Tables fro PPG SLM",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "client_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "client_secret",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ppg data from kcc-hana-sys-sls-api",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/200-response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400-response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401-response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404-response"
+                }
+              }
+            }
+          }
+          ,
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405-response"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/416-response"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "post": {
+        "summary": "The method allow us to consume the lastest data from PPG and posted in Hana Tables",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "client_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "client_secret",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ], 
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ppg-body-request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The ppg data from kcc-hana-sys-sls-api",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/201-response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400-response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/401-response"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404-response"
+                }
+              }
+            }
+          }
+          ,
+          "405": {
+            "description": "Method Not Allowed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/405-response"
+                }
+              }
+            }
+          },
+          "416": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/416-response"
+                }
+              }
+            }
+          }
+        }
+      }
+
+
+    }
+  },
+    
+  
+  "components": {
+      "schemas": {
+
+        "ppg-body-request":{
+          "type": "object",
+          "properties":{
+            "highLevelGroup":{
+              "type": "string"
+            },
+            "tab":{
+              "type": "string"
+            },
+            "searchKeyword": {
+              "type": "array",
+              "properties":{
+                "fieldName": {
+                  "type": "string"
+                },
+                  "fieldValue":{
+                    "type": "string"
+                },
+                  "OrderbyFieldName": {
+                    "type": "string"
+                },
+                  "OrderbyDesc": {
+                    "type": "boolean"
+                  }
+              }
+            },
+            "pagination": {
+              "type": "object",
+              "properties":{
+                "pageNum":{
+                  "type": "integer"
+                },
+                "perPage":{
+                  "type": "integer"
+                },
+                "totalPages":{
+                  "type": "integer"
+                },
+                "totalDataCount": {
+                  "type": "integer"
+                }
+              }
+            }
+           
+          },
+          "required": ["highLevelGroup", "tab", "searchKeyword", "pagination"],
+          "additionalProperties": false
+        },
+        "201-response" : {
+          "type": "object",
+          "properties":{
+            "message": {
+              "type": "string"
+            }
+          }
+        },
+        "200-response": {
+          "type": "array",
+          "properties": {
+            "COUNTRY": {
+              "type": "string"
+            },
+            "LAST_PRICE_EFFECTIVE_DATE":{
+              "type": "string"
+            },
+            "LAST_UPDATED_USER_ID":{
+              "type": "string"
+            },
+            "CREATED_USER_ID":{
+              "type": "string"
+            },
+            "CREATED_DATETIME":{
+              "type": "string"
+            },
+            "PRC_TYP":{
+              "type": "string"
+            },
+            "UOM":{
+              "type": "string"
+            },
+            "LAST_PRICE_EFFECTIVE_END_DATE":{
+              "type": "string"
+            },
+            "PROM_PRC_GRP":{
+              "type": "string"
+            },
+            "LAST_UPDATED_DATETIME":{
+              "type": "string"
+            },
+            "GUID":{
+              "type": "number"
+            },
+            "CURRENCY":{
+              "type": "string"
+            },
+            "VALUE":{
+              "type": "number"
+            }
+          }
+        },
+        "400-response": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string"
+            },
+            "result_code":{
+              "type": "string"
+            }
+          }
+        },
+        "401-response": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string"
+            },
+            "result_code":{
+              "type": "string"
+            }
+          }
+        }, 
+        "404-response": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string"
+            },
+            "result_code":{
+              "type": "string"
+            }
+          }
+        },
+        "405-response": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string"
+            },
+            "result_code":{
+              "type": "string"
+            }
+          }
+        },
+        "416-response": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string"
+            },
+            "result_code":{
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+
+
+}
