@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "700ce12d-b624-4ce1-929c-7a552ec183ff",
+		"name": "Test - Node API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10452192"
+	},
+	"item": [
+		{
+			"name": "Node (Local)",
+			"item": [
+				{
+					"name": "POST -> /movePricingData/ppg",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "12345",
+								"type": "text"
+							},
+							{
+								"key": "client_secret",
+								"value": "12345",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"highLevelGroup\": \"string\",\r\n    \"tab\": \"string\",\r\n    \"searchKeyword\": [\r\n      {\r\n        \"fieldName\": \"\",\r\n        \"fieldValue\": \"\",\r\n        \"OrderbyFieldName\": \"\",\r\n        \"OrderbyDesc\": true\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"pageNum\": 0,\r\n      \"perPage\": 0,\r\n      \"totalPages\": 0,\r\n      \"totalDataCount\": 0\r\n    }\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/resource1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"resource1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET -> /movePricingData/ppg",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "12345",
+								"type": "text"
+							},
+							{
+								"key": "client_secret",
+								"value": "12345",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/resource1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"resource1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

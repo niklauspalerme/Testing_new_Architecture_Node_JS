@@ -14,7 +14,6 @@ const errorHandler = (err, req, res, next) => {
     console.log("Global Error Handler: ", status);
 
 
-
     //AQui debes tener el error de los hjeader el de no autorizado
 
     if(status === 405)

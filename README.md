@@ -1,8 +1,13 @@
-# Testing HANA DB Connection 
+# Errors Handlers 
 
-> Aqui se usa la libreria **@sap/hdbext y sap-hdbext-promisfied** la parte de Middleware. Ya es ASYNC y AWAIT
+> Remeber to install the node_modules using -->  ```npm install```
+
+> Run the Application  --> ```npm run server``` 
+
+> Error Async Handler Option #1  in branch --> ```main``` 
+
+> Error Async Handler Option #2  in branch --> ```d1``` 
+
+> Please find the postman collection in the folder --> ```assets``` 
 
 
-> Recuerden que deben de ejecutar ```npm install``` para reconstruir los módulos de Node.
-
-> Para correr el programa  ```npm run server``` 

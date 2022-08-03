@@ -9,7 +9,17 @@ const { errorHandler, invalidPathHandler, methodNotAllowed } = require('./error-
 const helmet = require('helmet');
 const { validateInputs } = require('./pre-request-handlers/openapi');
 const {apirouter} = require('./controllers/api-router');
-const { request, response, next } = require('express');
+
+
+
+// Test #1
+//require('express-async-errors');
+
+
+//Test #2
+const { hookRouter } = require("./controllers/hookRouter")
+
+
 
 
 
@@ -31,8 +41,6 @@ class Server {
         // Accedemos al ENV
         config();
 
-        //Path de las rutas
-        //this.slmPath = '/api/v1/ppg'
         //Middlewares
         this.middlewares();
 
@@ -57,26 +65,19 @@ class Server {
 
         this.app.use(helmet());
 
-        // Validating inputs before go to controller
+        // Validating the OpenApis Spec before go to controller
         this.app.use(validateInputs); 
+
+        //Test #2  - Error Async Handler
+        hookRouter();
 
     }
 
 
     routes = () => {
 
-        // Error handler middleware for async controller
-        const asyncHandler = () => {
-            return Promise
-                //.resolve(fn(req, res, next))
-                .resolve(apirouter())
-                .catch(next);
-        };
+        this.app.use("/api", apirouter());
 
-
-        this.app.use("/api", asyncHandler());
-
-      
     }
 
     
@@ -91,7 +92,7 @@ class Server {
     listen = (port) => {
 
         this.app.listen(port, () => {
-            console.log(`Server is listen the port ${port}`);
+            console.log(`🚀 Server is listen the port ${port} 🚀`);
         })
 
     }
