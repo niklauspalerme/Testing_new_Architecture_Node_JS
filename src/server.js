@@ -13,11 +13,11 @@ const {apirouter} = require('./controllers/api-router');
 
 
 // Test #1
-//require('express-async-errors');
+require('express-async-errors');
 
 
 //Test #2
-const { hookRouter } = require("./controllers/hookRouter")
+//const { hookRouter } = require("./controllers/hookRouter")
 
 
 
@@ -69,7 +69,7 @@ class Server {
         this.app.use(validateInputs); 
 
         //Test #2  - Error Async Handler
-        hookRouter();
+        //hookRouter();
 
     }
 
