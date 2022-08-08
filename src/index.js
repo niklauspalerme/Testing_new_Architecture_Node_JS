@@ -28,7 +28,7 @@ let main = () => {
     ////////////////////////////////
     //Funciones
 
-    server.listen(PORT)
+    server.listen(PORT);
 
 }
 

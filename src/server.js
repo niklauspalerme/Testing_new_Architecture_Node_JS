@@ -5,12 +5,12 @@
 const express = require('express');
 const cors = require('cors');
 const { config } = require('dotenv');
-const { errorHandler, invalidPathHandler, methodNotAllowed } = require('./error-handling/errors-Handlers');
 const helmet = require('helmet');
 const { validateInputs } = require('./pre-request-handlers/openapi');
 const {apirouter} = require('./controllers/api-router');
-
-
+const { response } = require('express');
+const {badRequest, notFound, methodNotAllowed, notAcceptable, unsupportedMediaType, anyError} = require('./error-handling/errors-Handlers');
+//const { errorHandler, invalidPathHandler, methodNotAllowed } = require('./error-handling/errors-Handlers');
 
 // Test #1
 require('express-async-errors');
@@ -28,6 +28,7 @@ require('express-async-errors');
 
 
 class Server {
+
 
 
     ////////////////////////////////
@@ -50,6 +51,7 @@ class Server {
         //Errors Handlers
         this.errors();
 
+        
         
     }
 
@@ -83,10 +85,13 @@ class Server {
     
     errors = () =>{
 
-        this.app.use(errorHandler) // -> Sync Error Handler
-        //this.app.use(invalidPathHandler);
-        //this.app.use(methodNotAllowed);
-
+        this.app.use(badRequest); 
+        this.app.use(notFound);
+        this.app.use(methodNotAllowed);
+        this.app.use(notAcceptable);
+        this.app.use(unsupportedMediaType);
+        this.app.use(anyError);
+    
     }
 
     listen = (port) => {

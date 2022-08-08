@@ -26,9 +26,3 @@ const apirouter = () => {
 module.exports = {apirouter}
 
 
-
-
-
-//const { check } = require('express-validator');
-//const { validarCampos} = require("../middlewares/validar-campos");
-//const { unauthorizedError, unsupportedMediaType, invalidContentHeaders } = require("../error-handling/errors-Handlers");

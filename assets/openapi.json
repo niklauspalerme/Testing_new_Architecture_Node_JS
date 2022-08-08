@@ -85,12 +85,12 @@
               }
             }
           },
-          "416": {
+          "415": {
             "description": "Unsupported Media Type",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/416-response"
+                  "$ref": "#/components/schemas/415-response"
                 }
               }
             }
@@ -180,12 +180,12 @@
               }
             }
           },
-          "416": {
+          "415": {
             "description": "Unsupported Media Type",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/416-response"
+                  "$ref": "#/components/schemas/415-response"
                 }
               }
             }
@@ -345,7 +345,7 @@
             }
           }
         },
-        "416-response": {
+        "415-response": {
           "type": "object",
           "properties": {
             "result": {
